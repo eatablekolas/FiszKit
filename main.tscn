@@ -1,0 +1,280 @@
+[gd_scene load_steps=14 format=3 uid="uid://ce0mdojao4bet"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_2mwkd"]
+[ext_resource type="PackedScene" uid="uid://wqdq214fan6x" path="res://fiszka.tscn" id="1_on7q1"]
+[ext_resource type="FontFile" uid="uid://bley2lrblcl16" path="res://fonts/Montserrat-Medium.ttf" id="3_iiand"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7to8b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gcd3q"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_u7cbq"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_xrn7k"]
+events = [SubResource("InputEventKey_u7cbq")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_u2jfr"]
+device = -1
+keycode = 49
+unicode = 49
+
+[sub_resource type="InputEventKey" id="InputEventKey_juraa"]
+device = -1
+keycode = 4194439
+unicode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_m5u3o"]
+events = [SubResource("InputEventKey_u2jfr"), SubResource("InputEventKey_juraa")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_4t3iy"]
+device = -1
+keycode = 50
+unicode = 50
+
+[sub_resource type="InputEventKey" id="InputEventKey_m6pgj"]
+device = -1
+keycode = 4194440
+unicode = 50
+
+[sub_resource type="Shortcut" id="Shortcut_r3at8"]
+events = [SubResource("InputEventKey_4t3iy"), SubResource("InputEventKey_m6pgj")]
+
+[node name="UI" type="Control" node_paths=PackedStringArray("fiszka")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2mwkd")
+fiszka = NodePath("Fiszka")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[node name="Fiszka" parent="." instance=ExtResource("1_on7q1")]
+layout_mode = 1
+
+[node name="FlipHint" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -80.0
+offset_right = 100.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[node name="Key" type="Label" parent="FlipHint"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 8.0
+offset_right = 60.0
+offset_bottom = -8.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_iiand")
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Action" type="Label" parent="FlipHint"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 76.0
+offset_top = 8.0
+offset_right = 196.0
+offset_bottom = -8.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_iiand")
+text = "Odwróć"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Border" type="ColorRect" parent="FlipHint"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -33.0
+offset_top = 2.0
+offset_right = -31.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[node name="FlipButton" type="Button" parent="FlipHint"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"FlatButton"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7to8b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gcd3q")
+shortcut = SubResource("Shortcut_xrn7k")
+
+[node name="KnowHint" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -328.0
+offset_top = -80.0
+offset_right = -128.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0.486275, 0.0235294, 1)
+
+[node name="Key" type="Label" parent="KnowHint"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 8.0
+offset_right = 60.0
+offset_bottom = -8.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_iiand")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Action" type="Label" parent="KnowHint"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 76.0
+offset_top = 8.0
+offset_right = 196.0
+offset_bottom = -8.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_iiand")
+text = "Umiem"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Border" type="ColorRect" parent="KnowHint"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -33.0
+offset_top = 2.0
+offset_right = -31.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[node name="KnowButton" type="Button" parent="KnowHint"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"FlatButton"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7to8b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gcd3q")
+shortcut = SubResource("Shortcut_m5u3o")
+
+[node name="NotKnowHint" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = -80.0
+offset_right = 328.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.486275, 0, 0, 1)
+
+[node name="Key" type="Label" parent="NotKnowHint"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 8.0
+offset_right = 60.0
+offset_bottom = -8.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_iiand")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Action" type="Label" parent="NotKnowHint"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 76.0
+offset_top = 8.0
+offset_right = 196.0
+offset_bottom = -8.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_iiand")
+text = "Nie umiem"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Border" type="ColorRect" parent="NotKnowHint"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -33.0
+offset_top = 2.0
+offset_right = -31.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[node name="NotKnowButton" type="Button" parent="NotKnowHint"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"FlatButton"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7to8b")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_gcd3q")
+shortcut = SubResource("Shortcut_r3at8")
+
+[connection signal="pressed" from="FlipHint/FlipButton" to="." method="_on_flip_button_pressed"]
