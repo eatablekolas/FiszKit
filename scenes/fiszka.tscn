@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://wqdq214fan6x"]
 
 [ext_resource type="FontFile" uid="uid://bley2lrblcl16" path="res://fonts/Montserrat-Medium.ttf" id="1_0dde3"]
-[ext_resource type="Script" path="res://fiszka.gd" id="1_hdrsr"]
+[ext_resource type="Script" path="res://scripts/fiszka.gd" id="1_hdrsr"]
 
 [sub_resource type="Theme" id="Theme_kypju"]
 default_font = ExtResource("1_0dde3")
@@ -9,53 +9,14 @@ default_font_size = 22
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lvjun"]
 
-[sub_resource type="Animation" id="Animation_kr64l"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Background:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Background/Front:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Background/Back:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_vlnal"]
-resource_name = "flip"
+[sub_resource type="Animation" id="Animation_rj2ka"]
+resource_name = "flip_to_back"
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Background:scale")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -67,7 +28,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Background/Front:visible")
+tracks/1/path = NodePath("Front:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -79,7 +40,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Background/Back:visible")
+tracks/2/path = NodePath("Back:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -89,14 +50,53 @@ tracks/2/keys = {
 "values": [false, true]
 }
 
-[sub_resource type="Animation" id="Animation_mycwa"]
+[sub_resource type="Animation" id="Animation_wx6yg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Front:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Back:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_pbngj"]
 resource_name = "flip_to_front"
 length = 0.5
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Background:scale")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -108,7 +108,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Background/Front:visible")
+tracks/1/path = NodePath("Front:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -120,7 +120,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Background/Back:visible")
+tracks/2/path = NodePath("Back:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -130,45 +130,32 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_u7eym"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a8ubj"]
 _data = {
-"RESET": SubResource("Animation_kr64l"),
-"flip_to_back": SubResource("Animation_vlnal"),
-"flip_to_front": SubResource("Animation_mycwa")
+"RESET": SubResource("Animation_wx6yg"),
+"flip_to_back": SubResource("Animation_rj2ka"),
+"flip_to_front": SubResource("Animation_pbngj")
 }
 
-[node name="Fiszka" type="Control" node_paths=PackedStringArray("anim_player")]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_hdrsr")
-anim_player = NodePath("AnimationPlayer")
-
-[node name="Background" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -250.0
-offset_right = 250.0
-offset_bottom = 250.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Fiszka" type="ColorRect" node_paths=PackedStringArray("front", "back", "anim_player")]
+offset_right = 512.0
+offset_bottom = 512.0
 pivot_offset = Vector2(250, 250)
 color = Color(0.196078, 0.196078, 0.196078, 1)
+script = ExtResource("1_hdrsr")
+front = NodePath("Front")
+back = NodePath("Back")
+anim_player = NodePath("AnimationPlayer")
 
-[node name="Front" type="Button" parent="Background"]
-z_index = 1
+[node name="Front" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
@@ -178,14 +165,18 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_lvjun")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lvjun")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_lvjun")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lvjun")
-text = "Question"
+text = "Pojęcie"
 
-[node name="Back" type="Button" parent="Background"]
+[node name="Back" type="Button" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
@@ -195,13 +186,12 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_lvjun")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lvjun")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_lvjun")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_lvjun")
-text = "Answer"
+text = "Definicja"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_u7eym")
+"": SubResource("AnimationLibrary_a8ubj")
 }
 
-[connection signal="pressed" from="Background/Front" to="." method="_on_front_pressed"]
-[connection signal="pressed" from="Background/Back" to="." method="_on_back_pressed"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="Front" to="." method="_on_front_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

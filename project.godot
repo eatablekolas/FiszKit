@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="FiszKit"
-run/main_scene="res://main.tscn"
+run/main_scene="res://scenes/editor.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -24,7 +24,10 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
-"res://fonts/": "gray"
+"res://fonts/": "gray",
+"res://icons/": "purple",
+"res://scenes/": "green",
+"res://scripts/": "blue"
 }
 
 [input]

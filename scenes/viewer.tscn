@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://ce0mdojao4bet"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_2mwkd"]
-[ext_resource type="PackedScene" uid="uid://wqdq214fan6x" path="res://fiszka.tscn" id="1_on7q1"]
-[ext_resource type="FontFile" uid="uid://bley2lrblcl16" path="res://fonts/Montserrat-Medium.ttf" id="3_iiand"]
+[ext_resource type="Script" path="res://scripts/viewer.gd" id="1_yr1bk"]
+[ext_resource type="PackedScene" uid="uid://wqdq214fan6x" path="res://scenes/fiszka.tscn" id="2_fgtpl"]
+[ext_resource type="FontFile" uid="uid://bley2lrblcl16" path="res://fonts/Montserrat-Medium.ttf" id="3_nybe1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7to8b"]
 
@@ -49,7 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_2mwkd")
+script = ExtResource("1_yr1bk")
 fiszka = NodePath("Fiszka")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -61,8 +61,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 
-[node name="Fiszka" parent="." instance=ExtResource("1_on7q1")]
+[node name="Fiszka" parent="." instance=ExtResource("2_fgtpl")]
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="FlipHint" type="ColorRect" parent="."]
 layout_mode = 1
@@ -88,7 +99,7 @@ offset_top = 8.0
 offset_right = 60.0
 offset_bottom = -8.0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_iiand")
+theme_override_fonts/font = ExtResource("3_nybe1")
 text = "Space"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -102,7 +113,7 @@ offset_top = 8.0
 offset_right = 196.0
 offset_bottom = -8.0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_iiand")
+theme_override_fonts/font = ExtResource("3_nybe1")
 text = "Odwróć"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -159,7 +170,7 @@ offset_top = 8.0
 offset_right = 60.0
 offset_bottom = -8.0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_iiand")
+theme_override_fonts/font = ExtResource("3_nybe1")
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -173,7 +184,7 @@ offset_top = 8.0
 offset_right = 196.0
 offset_bottom = -8.0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_iiand")
+theme_override_fonts/font = ExtResource("3_nybe1")
 text = "Umiem"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -230,7 +241,7 @@ offset_top = 8.0
 offset_right = 60.0
 offset_bottom = -8.0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_iiand")
+theme_override_fonts/font = ExtResource("3_nybe1")
 text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -244,7 +255,7 @@ offset_top = 8.0
 offset_right = 196.0
 offset_bottom = -8.0
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_iiand")
+theme_override_fonts/font = ExtResource("3_nybe1")
 text = "Nie umiem"
 horizontal_alignment = 1
 vertical_alignment = 1
