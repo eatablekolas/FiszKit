@@ -43,12 +43,19 @@ front_text = NodePath("EditScreen/Front")
 back_text = NodePath("EditScreen/Back")
 fiszka = NodePath("PreviewScreen/Fiszka")
 
-[node name="Manager" type="Control" parent="."]
+[node name="Manager" type="Control" parent="." node_paths=PackedStringArray("file_dialog")]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_31s6l")
+file_dialog = NodePath("../FileDialog")
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Zapisz fiszkę"
+initial_position = 1
+size = Vector2i(849, 472)
+access = 2
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -317,6 +324,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_gu666")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_iws1c")
 shortcut = SubResource("Shortcut_7ykut")
 
+[connection signal="pressed" from="EditScreen/Save/SaveButton" to="Manager" method="_on_save_button_pressed"]
 [connection signal="text_changed" from="EditScreen/Front" to="." method="_on_front_text_changed"]
 [connection signal="text_changed" from="EditScreen/Back" to="." method="_on_back_text_changed"]
 [connection signal="pressed" from="PreviewScreen/FlipHint/FlipButton" to="." method="_on_flip_button_pressed"]

@@ -1,5 +1,7 @@
 extends Control
 
+@export var file_dialog: FileDialog
+
 class Fiszka:
 	var front: String
 	var back: String
@@ -15,3 +17,6 @@ func update(on_front: bool, text: String):
 		fiszka_data.front = text
 	else:
 		fiszka_data.back = text
+
+func _on_save_button_pressed():
+	file_dialog.show()
