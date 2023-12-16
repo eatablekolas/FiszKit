@@ -43,19 +43,28 @@ front_text = NodePath("EditScreen/Front")
 back_text = NodePath("EditScreen/Back")
 fiszka = NodePath("PreviewScreen/Fiszka")
 
-[node name="Manager" type="Control" parent="." node_paths=PackedStringArray("file_dialog")]
+[node name="Manager" type="Control" parent="." node_paths=PackedStringArray("file_dialog", "fiszka", "counter", "prev", "next", "front", "back")]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_31s6l")
 file_dialog = NodePath("../FileDialog")
+fiszka = NodePath("../PreviewScreen/Fiszka")
+counter = NodePath("../EditScreen/Counter")
+prev = NodePath("../EditScreen/Prev/PrevButton")
+next = NodePath("../EditScreen/Next/NextButton")
+front = NodePath("../EditScreen/Front")
+back = NodePath("../EditScreen/Back")
 
 [node name="FileDialog" type="FileDialog" parent="."]
 title = "Zapisz fiszkę"
 initial_position = 1
 size = Vector2i(849, 472)
+cancel_button_text = "Anuluj"
 access = 2
+filters = PackedStringArray("*.fk ; Plik FiszKit")
+use_native_dialog = true
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -324,6 +333,10 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_gu666")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_iws1c")
 shortcut = SubResource("Shortcut_7ykut")
 
+[connection signal="file_selected" from="FileDialog" to="Manager" method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="EditScreen/Prev/PrevButton" to="Manager" method="_on_prev_button_pressed"]
+[connection signal="pressed" from="EditScreen/Next/NextButton" to="Manager" method="_on_next_button_pressed"]
+[connection signal="pressed" from="EditScreen/Add/AddButton" to="Manager" method="_on_add_button_pressed"]
 [connection signal="pressed" from="EditScreen/Save/SaveButton" to="Manager" method="_on_save_button_pressed"]
 [connection signal="text_changed" from="EditScreen/Front" to="." method="_on_front_text_changed"]
 [connection signal="text_changed" from="EditScreen/Back" to="." method="_on_back_text_changed"]

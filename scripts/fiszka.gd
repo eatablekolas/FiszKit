@@ -21,3 +21,7 @@ func change_text(on_front: bool, text: String):
 		front.text = text
 	else:
 		back.text = text
+
+func load_fiszka(front_text: String, back_text: String):
+	front.text = front_text
+	back.text = back_text
