@@ -1,11 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://wqdq214fan6x"]
+[gd_scene load_steps=8 format=3 uid="uid://wqdq214fan6x"]
 
-[ext_resource type="FontFile" uid="uid://bley2lrblcl16" path="res://fonts/Montserrat-Medium.ttf" id="1_0dde3"]
 [ext_resource type="Script" path="res://scripts/fiszka.gd" id="1_hdrsr"]
-
-[sub_resource type="Theme" id="Theme_kypju"]
-default_font = ExtResource("1_0dde3")
-default_font_size = 22
+[ext_resource type="Theme" uid="uid://6lcuxchomd8x" path="res://theme.tres" id="1_rlplp"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lvjun"]
 
@@ -141,6 +137,7 @@ _data = {
 offset_right = 512.0
 offset_bottom = 512.0
 pivot_offset = Vector2(250, 250)
+theme = ExtResource("1_rlplp")
 color = Color(0.196078, 0.196078, 0.196078, 1)
 script = ExtResource("1_hdrsr")
 front = NodePath("Front")
@@ -159,7 +156,6 @@ offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
-theme = SubResource("Theme_kypju")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_lvjun")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_lvjun")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lvjun")
@@ -180,7 +176,6 @@ offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
-theme = SubResource("Theme_kypju")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_lvjun")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_lvjun")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_lvjun")

@@ -1,55 +1,120 @@
-[gd_scene load_steps=19 format=3 uid="uid://6v7dbpddrhba"]
+[gd_scene load_steps=36 format=3 uid="uid://6v7dbpddrhba"]
 
 [ext_resource type="Script" path="res://scripts/editor.gd" id="1_euqyp"]
-[ext_resource type="PackedScene" uid="uid://wqdq214fan6x" path="res://scenes/fiszka.tscn" id="1_gg06g"]
 [ext_resource type="Script" path="res://scripts/manager.gd" id="2_31s6l"]
 [ext_resource type="Texture2D" uid="uid://cmqhxemuw50o1" path="res://icons/remove.svg" id="2_73tn2"]
 [ext_resource type="Theme" uid="uid://6lcuxchomd8x" path="res://theme.tres" id="2_qm7v1"]
 [ext_resource type="FontFile" uid="uid://bley2lrblcl16" path="res://fonts/Montserrat-Medium.ttf" id="3_utxi2"]
-[ext_resource type="Script" path="res://scenes/font_scale.gd" id="4_wa4jv"]
+[ext_resource type="Script" path="res://scripts/font_scale.gd" id="4_wa4jv"]
 [ext_resource type="Texture2D" uid="uid://ci5rveg62tkk6" path="res://icons/add.svg" id="4_wp60a"]
 [ext_resource type="Texture2D" uid="uid://d2lefa78exm7r" path="res://icons/next.svg" id="5_05ik5"]
 [ext_resource type="Texture2D" uid="uid://bubvq1a32k1op" path="res://icons/prev.svg" id="6_4w7lg"]
 [ext_resource type="Texture2D" uid="uid://8kc4b0kechur" path="res://icons/save.svg" id="8_hy8bs"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8tmrf"]
+[ext_resource type="Texture2D" uid="uid://bern0o5qsx1aa" path="res://icons/open.svg" id="10_s45a2"]
+[ext_resource type="PackedScene" uid="uid://wqdq214fan6x" path="res://scenes/fiszka.tscn" id="11_s6yf2"]
+[ext_resource type="Texture2D" uid="uid://d3f66xkd2n3uv" path="res://icons/close.svg" id="12_nbv2l"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0gr50"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hfpfs"]
+[sub_resource type="InputEventKey" id="InputEventKey_w73c0"]
+device = -1
+ctrl_pressed = true
+keycode = 78
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gu666"]
+[sub_resource type="Shortcut" id="Shortcut_h6jcl"]
+events = [SubResource("InputEventKey_w73c0")]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iws1c"]
+[sub_resource type="InputEventKey" id="InputEventKey_mww8f"]
+device = -1
+keycode = 4194312
+
+[sub_resource type="Shortcut" id="Shortcut_qlngp"]
+events = [SubResource("InputEventKey_mww8f")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_mdc0k"]
+device = -1
+keycode = 4194319
+
+[sub_resource type="InputEventKey" id="InputEventKey_gstxx"]
+device = -1
+keycode = 65
+unicode = 97
+
+[sub_resource type="Shortcut" id="Shortcut_wj40f"]
+events = [SubResource("InputEventKey_mdc0k"), SubResource("InputEventKey_gstxx")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_rrmvl"]
+device = -1
+keycode = 4194321
+
+[sub_resource type="InputEventKey" id="InputEventKey_rj41v"]
+device = -1
+keycode = 68
+unicode = 100
+
+[sub_resource type="Shortcut" id="Shortcut_yl78p"]
+events = [SubResource("InputEventKey_rrmvl"), SubResource("InputEventKey_rj41v")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_8y55k"]
+device = -1
+ctrl_pressed = true
+keycode = 83
+
+[sub_resource type="Shortcut" id="Shortcut_2vkk2"]
+events = [SubResource("InputEventKey_8y55k")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_2shmh"]
+device = -1
+ctrl_pressed = true
+keycode = 79
+
+[sub_resource type="Shortcut" id="Shortcut_d5kq2"]
+events = [SubResource("InputEventKey_2shmh")]
 
 [sub_resource type="InputEventKey" id="InputEventKey_u7cbq"]
 device = -1
 keycode = 32
 unicode = 32
 
-[sub_resource type="Shortcut" id="Shortcut_7ykut"]
+[sub_resource type="Shortcut" id="Shortcut_q2lgy"]
 events = [SubResource("InputEventKey_u7cbq")]
 
-[node name="UI" type="Control" node_paths=PackedStringArray("manager", "front_text", "back_text", "fiszka")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xv3bs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m8uqc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kxqlr"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_qxxkh"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_mv5ei"]
+events = [SubResource("InputEventKey_qxxkh")]
+
+[node name="UI" type="Control" node_paths=PackedStringArray("fiszka", "manager", "front_text", "back_text")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_qm7v1")
 script = ExtResource("1_euqyp")
+main_scene_path = "res://scenes/main.tscn"
+fiszka = NodePath("PreviewScreen/Fiszka")
 manager = NodePath("Manager")
 front_text = NodePath("EditScreen/Front")
 back_text = NodePath("EditScreen/Back")
-fiszka = NodePath("PreviewScreen/Fiszka")
 
-[node name="Manager" type="Control" parent="." node_paths=PackedStringArray("file_dialog", "fiszka", "counter", "prev", "next", "front", "back")]
+[node name="Manager" type="Control" parent="." node_paths=PackedStringArray("open_dialog", "save_dialog", "fiszka", "counter", "prev", "next", "front", "back")]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_31s6l")
-file_dialog = NodePath("../FileDialog")
+open_dialog = NodePath("../OpenDialog")
+save_dialog = NodePath("../SaveDialog")
 fiszka = NodePath("../PreviewScreen/Fiszka")
 counter = NodePath("../EditScreen/Counter")
 prev = NodePath("../EditScreen/Prev/PrevButton")
@@ -57,11 +122,25 @@ next = NodePath("../EditScreen/Next/NextButton")
 front = NodePath("../EditScreen/Front")
 back = NodePath("../EditScreen/Back")
 
-[node name="FileDialog" type="FileDialog" parent="."]
-title = "Zapisz fiszkę"
+[node name="OpenDialog" type="FileDialog" parent="."]
+title = "Otwórz plik"
 initial_position = 1
 size = Vector2i(849, 472)
+ok_button_text = "Open"
 cancel_button_text = "Anuluj"
+mode_overrides_title = false
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.fk ; Plik FiszKit")
+use_native_dialog = true
+
+[node name="SaveDialog" type="FileDialog" parent="."]
+title = "Zapisz plik"
+initial_position = 1
+size = Vector2i(849, 472)
+ok_button_text = "Zapisz"
+cancel_button_text = "Anuluj"
+mode_overrides_title = false
 access = 2
 filters = PackedStringArray("*.fk ; Plik FiszKit")
 use_native_dialog = true
@@ -86,60 +165,20 @@ grow_vertical = 2
 layout_mode = 0
 offset_left = 64.0
 offset_top = 64.0
-offset_right = 192.0
+offset_right = 400.0
 offset_bottom = 128.0
-theme = ExtResource("2_qm7v1")
 theme_override_font_sizes/font_size = 44
 text = "1/1"
 vertical_alignment = 1
 script = ExtResource("4_wa4jv")
-
-[node name="Prev" type="TextureRect" parent="EditScreen"]
-layout_mode = 0
-offset_left = 192.0
-offset_top = 64.0
-offset_right = 256.0
-offset_bottom = 128.0
-texture = ExtResource("6_4w7lg")
-
-[node name="PrevButton" type="Button" parent="EditScreen/Prev"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_8tmrf")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0gr50")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_hfpfs")
-disabled = true
-
-[node name="Next" type="TextureRect" parent="EditScreen"]
-layout_mode = 0
-offset_left = 272.0
-offset_top = 64.0
-offset_right = 336.0
-offset_bottom = 128.0
-texture = ExtResource("5_05ik5")
-
-[node name="NextButton" type="Button" parent="EditScreen/Next"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_8tmrf")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0gr50")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_hfpfs")
-disabled = true
+max_len = 13
 
 [node name="Add" type="TextureRect" parent="EditScreen"]
 layout_mode = 0
-offset_left = 352.0
-offset_top = 64.0
-offset_right = 416.0
-offset_bottom = 128.0
+offset_left = 272.0
+offset_top = 142.0
+offset_right = 336.0
+offset_bottom = 206.0
 texture = ExtResource("4_wp60a")
 
 [node name="AddButton" type="Button" parent="EditScreen/Add"]
@@ -149,16 +188,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_8tmrf")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0gr50")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_hfpfs")
+shortcut = SubResource("Shortcut_h6jcl")
 
 [node name="Remove" type="TextureRect" parent="EditScreen"]
 layout_mode = 0
-offset_left = 432.0
-offset_top = 64.0
-offset_right = 496.0
-offset_bottom = 128.0
+offset_left = 352.0
+offset_top = 142.0
+offset_right = 416.0
+offset_bottom = 206.0
 texture = ExtResource("2_73tn2")
 
 [node name="RemoveButton" type="Button" parent="EditScreen/Remove"]
@@ -168,9 +206,46 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_8tmrf")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0gr50")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_hfpfs")
+shortcut = SubResource("Shortcut_qlngp")
+
+[node name="Prev" type="TextureRect" parent="EditScreen"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 142.0
+offset_right = 496.0
+offset_bottom = 206.0
+texture = ExtResource("6_4w7lg")
+
+[node name="PrevButton" type="Button" parent="EditScreen/Prev"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0gr50")
+disabled = true
+shortcut = SubResource("Shortcut_wj40f")
+
+[node name="Next" type="TextureRect" parent="EditScreen"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 142.0
+offset_right = 576.0
+offset_bottom = 206.0
+texture = ExtResource("5_05ik5")
+
+[node name="NextButton" type="Button" parent="EditScreen/Next"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0gr50")
+disabled = true
+shortcut = SubResource("Shortcut_yl78p")
 
 [node name="Save" type="TextureRect" parent="EditScreen"]
 layout_mode = 0
@@ -187,9 +262,26 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_8tmrf")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0gr50")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_hfpfs")
+shortcut = SubResource("Shortcut_2vkk2")
+
+[node name="Open" type="TextureRect" parent="EditScreen"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 64.0
+offset_right = 496.0
+offset_bottom = 128.0
+texture = ExtResource("10_s45a2")
+
+[node name="OpenButton" type="Button" parent="EditScreen/Open"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0gr50")
+shortcut = SubResource("Shortcut_d5kq2")
 
 [node name="FrontLabel" type="Label" parent="EditScreen"]
 layout_mode = 0
@@ -197,7 +289,6 @@ offset_left = 64.0
 offset_top = 192.0
 offset_right = 158.0
 offset_bottom = 220.0
-theme = ExtResource("2_qm7v1")
 text = "Przód"
 
 [node name="Front" type="TextEdit" parent="EditScreen"]
@@ -206,7 +297,6 @@ offset_left = 64.0
 offset_top = 232.0
 offset_right = 576.0
 offset_bottom = 384.0
-theme = ExtResource("2_qm7v1")
 theme_override_colors/background_color = Color(0.196078, 0.196078, 0.196078, 1)
 text = "Pojęcie"
 wrap_mode = 1
@@ -217,7 +307,6 @@ offset_left = 64.0
 offset_top = 448.0
 offset_right = 158.0
 offset_bottom = 476.0
-theme = ExtResource("2_qm7v1")
 text = "Tył"
 
 [node name="Back" type="TextEdit" parent="EditScreen"]
@@ -226,7 +315,6 @@ offset_left = 64.0
 offset_top = 488.0
 offset_right = 576.0
 offset_bottom = 640.0
-theme = ExtResource("2_qm7v1")
 theme_override_colors/background_color = Color(0.196078, 0.196078, 0.196078, 1)
 text = "Definicja"
 wrap_mode = 1
@@ -245,67 +333,70 @@ offset_left = 40.0
 offset_top = 64.0
 offset_right = 134.0
 offset_bottom = 92.0
-theme = ExtResource("2_qm7v1")
 text = "Podgląd"
 
-[node name="Fiszka" parent="PreviewScreen" instance=ExtResource("1_gg06g")]
+[node name="Fiszka" parent="PreviewScreen" instance=ExtResource("11_s6yf2")]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -600.0
-offset_top = -250.0
-offset_right = -100.0
-offset_bottom = 250.0
-grow_horizontal = 0
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 256.0
+offset_bottom = 256.0
+grow_horizontal = 2
 grow_vertical = 2
 
-[node name="FlipHint" type="ColorRect" parent="PreviewScreen"]
+[node name="FlipHint" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -126.0
+offset_left = 160.0
 offset_top = -88.0
-offset_right = 74.0
+offset_right = 416.0
 offset_bottom = -48.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.196078, 0.196078, 0.196078, 1)
 
-[node name="Key" type="Label" parent="PreviewScreen/FlipHint"]
+[node name="Key" type="Label" parent="FlipHint"]
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = 8.0
-offset_right = 60.0
-offset_bottom = -8.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -14.0
+offset_right = -45.0
+offset_bottom = 14.0
+grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_utxi2")
 text = "Space"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Action" type="Label" parent="PreviewScreen/FlipHint"]
+[node name="Action" type="Label" parent="FlipHint"]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_left = 76.0
-offset_top = 8.0
-offset_right = 196.0
-offset_bottom = -8.0
+offset_left = 104.0
+offset_top = 6.0
+offset_right = 248.0
+offset_bottom = -6.0
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_utxi2")
 text = "Odwróć"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Border" type="ColorRect" parent="PreviewScreen/FlipHint"]
+[node name="Border" type="ColorRect" parent="FlipHint"]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
@@ -319,7 +410,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0784314, 0.0784314, 0.0784314, 1)
 
-[node name="FlipButton" type="Button" parent="PreviewScreen/FlipHint"]
+[node name="FlipButton" type="Button" parent="FlipHint"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -329,15 +420,44 @@ grow_vertical = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
 theme_type_variation = &"FlatButton"
-theme_override_styles/normal = SubResource("StyleBoxEmpty_gu666")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_iws1c")
-shortcut = SubResource("Shortcut_7ykut")
+shortcut = SubResource("Shortcut_q2lgy")
 
-[connection signal="file_selected" from="FileDialog" to="Manager" method="_on_file_dialog_file_selected"]
+[node name="Close" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -333.0
+offset_right = -48.0
+offset_bottom = -269.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("12_nbv2l")
+
+[node name="CloseButton" type="Button" parent="Close"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xv3bs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_m8uqc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_kxqlr")
+shortcut = SubResource("Shortcut_mv5ei")
+
+[connection signal="file_selected" from="OpenDialog" to="Manager" method="_on_open_dialog_file_selected"]
+[connection signal="file_selected" from="SaveDialog" to="Manager" method="_on_save_dialog_file_selected"]
+[connection signal="pressed" from="EditScreen/Add/AddButton" to="Manager" method="_on_add_button_pressed"]
+[connection signal="pressed" from="EditScreen/Remove/RemoveButton" to="Manager" method="_on_remove_button_pressed"]
 [connection signal="pressed" from="EditScreen/Prev/PrevButton" to="Manager" method="_on_prev_button_pressed"]
 [connection signal="pressed" from="EditScreen/Next/NextButton" to="Manager" method="_on_next_button_pressed"]
-[connection signal="pressed" from="EditScreen/Add/AddButton" to="Manager" method="_on_add_button_pressed"]
 [connection signal="pressed" from="EditScreen/Save/SaveButton" to="Manager" method="_on_save_button_pressed"]
+[connection signal="pressed" from="EditScreen/Open/OpenButton" to="Manager" method="_on_open_button_pressed"]
 [connection signal="text_changed" from="EditScreen/Front" to="." method="_on_front_text_changed"]
 [connection signal="text_changed" from="EditScreen/Back" to="." method="_on_back_text_changed"]
-[connection signal="pressed" from="PreviewScreen/FlipHint/FlipButton" to="." method="_on_flip_button_pressed"]
+[connection signal="pressed" from="FlipHint/FlipButton" to="." method="_on_flip_button_pressed"]
+[connection signal="pressed" from="Close/CloseButton" to="." method="_on_close_button_pressed"]

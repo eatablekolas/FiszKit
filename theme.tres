@@ -1,7 +1,13 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://6lcuxchomd8x"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://6lcuxchomd8x"]
 
 [ext_resource type="FontFile" uid="uid://bley2lrblcl16" path="res://fonts/Montserrat-Medium.ttf" id="1_8y328"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dkvy3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wmrwo"]
 
 [resource]
 default_font = ExtResource("1_8y328")
 default_font_size = 22
+Button/styles/focus = SubResource("StyleBoxEmpty_dkvy3")
+Button/styles/normal = SubResource("StyleBoxEmpty_wmrwo")

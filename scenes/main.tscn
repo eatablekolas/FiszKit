@@ -1,0 +1,119 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw64vx47dmhx7"]
+
+[ext_resource type="Theme" uid="uid://6lcuxchomd8x" path="res://theme.tres" id="1_laoot"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="2_gaemq"]
+[ext_resource type="FontFile" uid="uid://bley2lrblcl16" path="res://fonts/Montserrat-Medium.ttf" id="2_o8gbr"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_laoot")
+script = ExtResource("2_gaemq")
+viewer_scene_path = "res://scenes/viewer.tscn"
+editor_scene_path = "res://scenes/editor.tscn"
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -176.0
+offset_top = 64.0
+offset_right = 181.0
+offset_bottom = 195.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 107
+text = "FiszKit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Open" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -464.0
+offset_right = -192.0
+offset_bottom = -400.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[node name="Label" type="Label" parent="Open"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 304.0
+offset_bottom = -8.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_o8gbr")
+text = "Otwórz"
+vertical_alignment = 1
+
+[node name="OpenButton" type="Button" parent="Open"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_laoot")
+theme_type_variation = &"FlatButton"
+
+[node name="Edit" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -368.0
+offset_right = -192.0
+offset_bottom = -304.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[node name="Label" type="Label" parent="Edit"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 304.0
+offset_bottom = -8.0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_o8gbr")
+text = "Edytuj"
+vertical_alignment = 1
+
+[node name="EditButton" type="Button" parent="Edit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"FlatButton"
+
+[connection signal="pressed" from="Open/OpenButton" to="." method="_on_open_button_pressed"]
+[connection signal="pressed" from="Edit/EditButton" to="." method="_on_edit_button_pressed"]
